@@ -1,0 +1,135 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+<title>Home</title>
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans:600'>
+<link rel='stylesheet' href="{% static 'style.css' %}">
+</head>
+<body>
+	<div class="header-mobile">
+		<nav role="navigation" style="height: 0px;">
+  		<div id="menuToggle">
+    	<input class="mobile-button" type="checkbox">
+    	<span></span>
+    	<span></span>
+    	<span></span>
+
+    	<ul id="menu">
+      		<a href="/"><li>Home</li></a>
+      		<a href="#"><li>About</li></a>
+      		<a href="#"><li>Contact</li></a>
+            <a href="/citizen"><li>Citizen</li></a>
+            <a href="/police"><li>Police</li></a>
+            <a href="/corporate"><li>Corporate</li></a>
+            <a href="/authority"  class="active"><li>Authority</li></a>
+            <a href="/essential"><li>Essential Services</li></a>
+    	</ul>
+  		</div>
+		</nav>
+	</div>
+	<div class="header">
+  		<a href="/" class="logo" style="color: black; font-size: 26px">LOCKDOWN PASS SYSTEM</a>
+  		<div style="text-align: center; padding-top: 25px"><div class="header-right">
+    		<a href="/">Home</a>
+    		<a href="#contact">Contact</a>
+    		<a href="#about">About</a>
+            <a href="/citizen">Citizen</a>
+            <a href="/police">Police</a>
+            <a href="/corporate">Corporate</a>
+            <a href="/authority"  class="active">Authority</a>
+            <a href="/essential">Essential Services</a>
+        </div></div>
+	</div>
+    <div class="login-wrap" style="min-height:950px;">
+		<div class="login-html">
+            <p>Welcome! Authority.</p>
+			<input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Approve Passes</label>
+			<input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Region</label>
+			<div class="login-form">
+				<div class="sign-in-htm">
+                    <form method ="post" action="{% url 'index' %}" >
+                    {% csrf_token %}
+                        </br>
+                        <div class="group">
+                            <a href="{% url 'approve_corporate' %}" class="button" style="text-align: center; font-size: 12px">Approve Corporate Requests</a>
+                        </div>
+                        </br>
+                        </br>
+                        <div class="group">
+                            <a href="{% url 'approve_citizen' %}" class="button" style="text-align: center; font-size: 12px">Approve Citizen Requests</a>
+                        </div>
+                        </br>
+                        <p style="font-size: 22px; color: #fff">Approve Manually</p>
+                        <div class="group">
+                            <label for="aadhaar" class="label">Aadhaar Number</label>
+                            <input id="aadhaar" name="aadhaar" type="text" class="input">
+                        </div>
+                        <!--<div class="group">
+                            <label for="req_type" class="label">Pass Type</label>
+                                <table>
+                                    <tr>
+                                        <td> <input id="req_type" name="req_type" type="radio" class="input" value="req_type" style="width: 20px; margin: 1px;"> </td>
+                                        <td> <label for="req_type" style="overflow: auto">General</label> </td>
+                                    </tr>
+                                    <tr>
+                                        <td> <input id="req_type" name="req_type" type="radio" class="input" value="req_type" style="width: 20px; margin: 1px;"> </td>
+                                        <td> <label for="req_type" style="overflow: auto">Ad-hoc</label> </td>
+                                    </tr>
+                                </table>
+                        </div>-->
+                        <div class="group">
+                            <label for="req_date" class="label">Date</label>
+                            <input id="req_date" name="req_date" type="date" class="input">
+                        </div>
+                        <div class="group">
+                            <label for="req_time" class="label">Time</label>
+                            <input id="req_time" name="req_time" type="time" class="input">
+                        </div>
+                        <div class="group">
+                            <label for="req_duration" class="label">Duration (hours)</label>
+                            <input id="req_duration" name="req_duration" type="number" class="input">
+                        </div>
+                        <div class="group">
+                            <input type="submit" class="button" value="Submit">
+                        </div>
+                    </form>
+                    <div>
+                        {% for message in messages %}
+                        <h3>{{ message }}</h3>
+                        {% endfor %}
+                    </div>
+					<div class="hr"></div>
+				</div>
+				<div class="sign-up-htm">
+                    <form method ="post" action="{% url 'index' %}" >
+                    {% csrf_token %}
+                        <div class="group">
+                            <label for="region" class="label">Select Region</label>
+                            <input id="region" name="region" type="number" class="input">
+                        </div>
+                        <div class="group">
+                            <label for="max_pass" class="label">Set Maximum passes in Region</label>
+                            <input id="max_pass" name="max_pass" type="number" class="input">
+                        </div>
+                        <div class="group">
+                            <input type="submit" class="button" value="Submit">
+                        </div>
+                    </form>
+                    <div>
+                        {% for message in messages %}
+                        <h3>{{ message }}</h3>
+                        {% endfor %}
+                    </div>
+					<div class="hr"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+    <footer style="background-color: #f1f1f1; overflow: hidden;">
+		<p style="text-decoration-color: black; font-size: 20px; text-align: right; margin-right: 20px">#HackTheCrisisIndia</p>
+    </footer>
+</body>
+</html>

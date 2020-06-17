@@ -1,0 +1,142 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+<title>Authority</title>
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans:600'>
+<link rel='stylesheet' href="{% static 'style.css' %}">
+<link rel='stylesheet' href="{% static 'style_1.css' %}">
+</head>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script type = "text/javascript">
+         <!--
+            function Warn() {
+               alert ("Successful approval for 2 people");
+               //document.write ("This is a warning message!");
+         location.replace("{% url 'authority' %}")
+            }
+         //-->
+      </script>
+<body>
+<div class="header">
+      <a href="/" class="logo">CZ Pass System</a>
+      <div style="text-align: center; padding-top: 25px"><div class="header-right">
+        <a href="/">Home</a>
+        <a href="#contact">Contact</a>
+        <a href="#about">About</a>
+            <a href="/citizen">Citizen</a>
+            <a href="/police">Police</a>
+            <a href="/corporate">Corporate</a>
+            <a href="/authority"  class="active">Authority</a>
+            <a href="/essential">Essential Services</a>
+        </div></div>
+</div>
+<div>
+<ul>
+  <li><a href="{% url 'authority' %}">Corporate Request</a></li>
+  <li><a class="active" href="{% url 'bulk' %}">Bulk Approval</a></li>
+  <li><a href="{% url 'locality' %}">Locality Management</a></li>
+</ul>
+
+<div style="margin-left:25%;padding:1px 16px;height:1000px;">
+  <h2>Bulk Approval</h2>
+<br>
+
+<div style="overflow-x:auto;">
+  <table>
+    <tr>
+      <th>Request ID</th>
+      <th>Aadhaar No</th>
+      <th>Date Requested</th>
+      <th>Time Requested</th>
+	  <th>Reason</th>
+      <th>Approve</th>
+    </tr>
+    <tr>
+      <td>REQ53499</td>
+      <td>690992890642</td>
+      <td>10-04-2020</td>
+      <td>12:48:38</td>
+	  <td>Inter-State Travel</td>
+      <td><input type="checkbox" />    &nbsp;   </td>
+    </tr>
+    <tr>
+      <td>REQ41500</td>
+      <td>507083656314</td>
+      <td>11-04-2020</td>
+      <td>15:48:07</td>
+	  <td>Business Purpose</td>
+      <td><input type="checkbox" />    &nbsp;   </td>
+    </tr>
+    <tr>
+      <td>REQ75434</td>
+      <td>188427554186</td>
+      <td>15-04-2020</td>
+      <td>09:13:05</td>
+	  <td>Medical Checkup</td>
+	  <td><input type="checkbox" />    &nbsp;   </td>
+    </tr>
+	    <tr>
+      <td>REQ35131</td>
+      <td>880037169787</td>
+      <td>12-04-2020</td>
+      <td>06:38:27</td>
+	  <td>Grocery</td>
+	  <td><input type="checkbox" />    &nbsp;   </td>
+    </tr>
+	    <tr>
+      <td>REQ94981</td>
+      <td>361943266949</td>
+      <td>11-04-2020</td>
+      <td>08:37:08</td>
+	  <td>Grocery</td>
+	  <td><input type="checkbox" />    &nbsp;   </td>
+    </tr>
+	    <tr>
+      <td>REQ19446</td>
+      <td>115037610755</td>
+      <td>14-04-2020</td>
+      <td>02:46:24</td>
+	  <td>Routine Checkup</td>
+	  <td><input type="checkbox" />    &nbsp;   </td>
+    </tr>
+	    <tr>
+      <td>REQ75360</td>
+      <td>884499581651</td>
+      <td>13-04-2020</td>
+      <td>16:43:04</td>
+	  <td>Medical</td>
+	  <td><input type="checkbox" />    &nbsp;   </td>
+    </tr>
+	    <tr>
+      <td>REQ60110</td>
+      <td>915028870631</td>
+      <td>15-04-2020</td>
+      <td>20:07:55</td>
+	  <td>Grocery</td>
+	  <td><input type="checkbox" />    &nbsp;   </td>
+    </tr>
+	
+  </table>
+</div>
+<br>
+<br>
+
+<form action = "{% url 'authority' %}">
+ <div class="row">
+	<input type = "submit" value = "Approve" onclick = "Warn();" />
+  </div>
+  
+  </form>
+
+</div>
+</div>
+<footer style="background-color: #f1f1f1; overflow: hidden;">
+    <p style="text-decoration-color: black; font-size: 20px; text-align: right; margin-right: 20px">#HackTheCrisisIndia</p>
+</footer>
+</body>
+</html>

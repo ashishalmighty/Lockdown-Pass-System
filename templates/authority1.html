@@ -1,0 +1,106 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+<title>Authority</title>
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans:600'>
+<link rel='stylesheet' href="{% static 'style.css' %}">
+<link rel='stylesheet' href="{% static 'style_1.css' %}">
+</head>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script type = "text/javascript">
+         <!--
+            function Warn() {
+               alert ("Organization HEC has been approved");
+               //document.write ("This is a warning message!");
+         location.replace("{% url 'authority' %}")
+            }
+         //-->
+      </script>
+<body>
+<div class="header">
+  		<a href="/" class="logo" style="color: black; font-size: 26px">LOCKDOWN PASS SYSTEM</a>
+      <div style="text-align: center; padding-top: 25px"><div class="header-right">
+        <a href="/">Home</a>
+        <a href="#contact">Contact</a>
+        <a href="#about">About</a>
+            <a href="/citizen">Citizen</a>
+            <a href="/police">Police</a>
+            <a href="/corporate">Corporate</a>
+            <a href="/authority"  class="active">Authority</a>
+            <a href="/essential">Essential Services</a>
+        </div></div>
+</div>
+<div>
+<ul>
+  <li><a class="active" href="#">Corporate Request</a></li>
+  <li><a href="{% url 'bulk' %}">Bulk Approval</a></li>
+  <li><a href="{% url 'locality' %}">Locality Management</a></li>
+</ul>
+
+<div style="margin-left:25%;padding:1px 16px;height:1000px;">
+  <h2>Corporate Request</h2>
+<br>
+<br>
+
+<div style="overflow-x:auto;">
+
+
+<div class="container">
+  <form action = "{% url 'approval' %}">
+  <div class="row">
+    <div class="col-25">
+      <label for="fname">Organization Type</label>
+    </div>
+    <div class="col-75">
+      <select id="industry_type" name="industry_type">	
+        <option value="food/milk">Food/Milk Supply (Essential Services)</option>
+        <option value="hospial">Hospital Services</option>
+        <option value="petroleum">Petroleum and Fuel Services</option>
+		<option value="industry/manufacture">Industry/Manufacturer (Essential Services)</option>
+		<option value="mdm">Mid Day Meal Services</option>
+      </select>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+      <label for="lname">Organization Name</label>
+    </div>
+    <div class="col-75">
+        <select id="industry" name="industry">	
+        <option value="osamDiary">Osam Dairy</option>
+        <option value="SIP">SUNDUM INDUSTRIES PVT LTD</option>
+        <option value="lcth">Life Care Trust Hospital</option>
+		<option value="hec">HEC</option>
+		<option value="mecon">MECON</option>
+      </select>
+    </div>
+  </div>
+  <div class="row">
+   
+  </div>
+  <div class="row">
+    <br>    
+  </div>
+  <div class="row">
+    <input type="submit" value="Submit">
+  </div>
+  </form>
+</div>
+
+<br>
+<br>
+  
+</div>
+
+</div>
+</div>
+<footer style="background-color: #f1f1f1; overflow: hidden;">
+    <p style="text-decoration-color: black; font-size: 20px; text-align: right; margin-right: 20px">#HackTheCrisisIndia</p>
+</footer>
+</body>
+</html>

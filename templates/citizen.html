@@ -1,0 +1,124 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+<title>Citizen</title>
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans:600'>
+<link rel='stylesheet' href="{% static 'style.css' %}">
+</head>
+<body>
+	<div class="header-mobile">
+		<nav role="navigation" style="height: 0px;">
+  		<div id="menuToggle">
+    	<input class="mobile-button" type="checkbox">
+    	<span></span>
+    	<span></span>
+    	<span></span>
+
+    	<ul id="menu">
+      		<a href="/" class="active"><li>Home</li></a>
+      		<a href="#"><li>About</li></a>
+      		<a href="#"><li>Contact</li></a>
+            <a href="/citizen"  class="active"><li>Citizen</li></a>
+            <a href="/police"><li>Police</li></a>
+            <a href="/corporate"><li>Corporate</li></a>
+            <a href="/authority"><li>Authority</li></a>
+            <a href="/essential"><li>Essential Services</li></a>
+    	</ul>
+  		</div>
+		</nav>
+	</div>
+	<div class="header">
+  		<a href="/" class="logo">Lockdown Pass System</a>
+  		<div style="text-align: center; padding-top: 25px"><div class="header-right">
+    		<a href="/">Home</a>
+    		<a href="#contact">Contact</a>
+    		<a href="#about">About</a>
+            <a href="/citizen"  class="active">Citizen</a>
+            <a href="/police">Police</a>
+            <a href="/corporate">Corporate</a>
+            <a href="/authority">Authority</a>
+            <a href="/essential">Essential Services</a>
+        </div></div>
+	</div>
+    <div class="login-wrap"  style="min-height:800px;">
+		<div class="login-html">
+            <p>Welcome! Citizen.</p>
+			<input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Request Pass</label>
+			<input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Pass Status</label>
+			<div class="login-form">
+				<div class="sign-in-htm">
+                    <form method ="post" action="{% url 'citizen/request' %}" >
+                    {% csrf_token %}
+                        <div class="group">
+                            <label for="aadhaar" class="label">Aadhaar Number</label>
+                            <input id="aadhaar" name="aadhaar" type="text" class="input">
+                        </div>
+                        <!--<div class="group">
+                            <label for="req_type" class="label">Pass Type</label>
+                                <table>
+                                    <tr>
+                                        <td> <input id="req_type" name="req_type" type="radio" class="input" value="req_type" style="width: 20px; margin: 1px;"> </td>
+                                        <td> <label for="req_type" style="overflow: auto">General</label> </td>
+                                    </tr>
+                                    <tr>
+                                        <td> <input id="req_type" name="req_type" type="radio" class="input" value="req_type" style="width: 20px; margin: 1px;"> </td>
+                                        <td> <label for="req_type" style="overflow: auto">Ad-hoc</label> </td>
+                                    </tr>
+                                </table>
+                        </div>-->
+                        <div class="group">
+                            <label for="req_date" class="label">Date</label>
+                            <input id="req_date" name="req_date" type="date" class="input">
+                        </div>
+                        <div class="group">
+                            <label for="req_time" class="label">Time</label>
+                            <input id="req_time" name="req_time" type="time" class="input">
+                        </div>
+                        <div class="group">
+                            <label for="req_duration" class="label">Duration (hours)</label>
+                            <input id="req_duration" name="req_duration" type="number" class="input">
+                        </div>
+                        <div class="group">
+                            <input type="submit" class="button" value="Submit">
+                        </div>
+                    </form>
+                    <div>
+                        {% for message in messages %}
+                        <h3>{{ message }}</h3>
+                        {% endfor %}
+                    </div>
+					<div class="hr"></div>
+				</div>
+				<div class="sign-up-htm">
+                    <form method ="post" action="{% url 'citizen/status' %}" >
+                    {% csrf_token %}
+                        <div class="group">
+                            <label for="aadhaar" class="label">Aadhaar Number</label>
+                            <input id="aadhaar" name="aadhaar" type="number" class="input">
+                        </div>
+                        <div class="group">
+                            <label for="cnr_num" class="label">CNR Number</label>
+                            <input id="cnr_num" name="cnr_num" type="number" class="input">
+                        </div>
+                        <div class="group">
+                            <input type="submit" class="button" value="Submit">
+                        </div>
+                    </form>
+                    <div>
+                        {% for message in messages %}
+                        <h3>{{ message }}</h3>
+                        {% endfor %}
+                    </div>
+					<div class="hr"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+    <footer style="background-color: #f1f1f1; overflow: hidden;">
+		<p style="text-decoration-color: black; font-size: 20px; text-align: right; margin-right: 20px">#HackTheCrisisIndia</p>
+    </footer>
+</body>
+</html>

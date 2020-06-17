@@ -1,0 +1,84 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+<title>Home</title>
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans:600'>
+<link rel='stylesheet' href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+</head>
+<body>
+	<div class="header-mobile">
+		<nav role="navigation" style="height: 0px;">
+  		<div id="menuToggle">
+    	<input class="mobile-button" type="checkbox">
+    	<span></span>
+    	<span></span>
+    	<span></span>
+
+    	<ul id="menu">
+      		<a href="/"><li>Home</li></a>
+      		<a href="#"><li>About</li></a>
+      		<a href="#"><li>Contact</li></a>
+            <a href="/citizen"><li>Citizen</li></a>
+            <a href="/police"><li>Police</li></a>
+            <a href="/corporate"><li>Corporate</li></a>
+            <a href="/authority"  class="active"><li>Authority</li></a>
+            <a href="/essential"><li>Essential Services</li></a>
+    	</ul>
+  		</div>
+		</nav>
+	</div>
+	<div class="header">
+  		<a href="/" class="logo" style="color: black; font-size: 26px">LOCKDOWN PASS SYSTEM</a>
+  		<div style="text-align: center; padding-top: 25px"><div class="header-right">
+    		<a href="/">Home</a>
+    		<a href="#contact">Contact</a>
+    		<a href="#about">About</a>
+            <a href="/citizen">Citizen</a>
+            <a href="/police">Police</a>
+            <a href="/corporate">Corporate</a>
+            <a href="/authority"  class="active">Authority</a>
+            <a href="/essential">Essential Services</a>
+        </div></div>
+	</div>
+    </br>
+    <label style="font-size: 22px; color: #fff; border-bottom: 2px solid; margin-left: 50px; border-color:#1161ee;
+            text-transform:uppercase; display: inline-block; padding-bottom: 7px;">Approve Citizen Requests</label>
+    </br>
+    <table class="responstable">
+
+          <tr>
+            <th>Aadhaar Number</th>
+              <th>Req Date</th>
+              <th>Req Time</th>
+              <th>Req Duration</th>
+              <th>Status</th>
+              <th>Approve</th>
+              <th>Reject</th>
+          </tr>
+          {% for item in query_results %}
+          <tr>
+            <td>{{ item.aadhaar }}</td>
+            <td>{{ item.req_date }}</td>
+            <td>{{ item.req_time }}</td>
+            <td>{{ item.req_duration }}</td>
+            <td>{{ item.status }}</td>
+            <td><form method="post" action="{% url 'approveCit' item.id %}">
+                {% csrf_token %}
+                <input type="submit" value="Approve"></form>
+            </td>
+            <td><form method="post" action="{% url 'rejectCit' item.id %}">
+                {% csrf_token %}
+                <input type="submit" value="Reject"></form>
+            </td>
+          </tr>
+          {% endfor %}
+        </table>
+    <footer style="background-color: #f1f1f1; overflow: hidden;">
+		<p style="text-decoration-color: black; font-size: 20px; text-align: right; margin-right: 20px">#HackTheCrisisIndia</p>
+    </footer>
+</body>
+</html>
